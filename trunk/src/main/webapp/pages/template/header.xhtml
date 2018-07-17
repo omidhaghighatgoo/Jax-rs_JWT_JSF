@@ -1,0 +1,16 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+    <div id="header-container">
+
+        <a href="#{request.contextPath}/pages/home.xhtml">
+            <h:graphicImage name="images/home.png" />
+        </a>
+
+        <p:commandButton value="Log Out" actionListener="#{loginBean.logOut}"  />
+    </div>
+</ui:composition>
+

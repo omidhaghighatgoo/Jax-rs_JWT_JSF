@@ -1,0 +1,56 @@
+<ui:composition  template="/pages/template/layout.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+    </h:head>
+
+    <ui:define name="messages">
+        <div style="direction: rtl " id="table1">
+        #{userBean.message}
+        </div>
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <p:panel header="Create User">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="name:" for="name"/>
+                    <p:inputText id="name" value="#{userBean.name}"/>
+
+                    <p:outputLabel value="family:" for="family"/>
+                    <p:inputText id="family" value="#{userBean.family}"/>
+
+                    <p:outputLabel value="username:" for="username"/>
+                    <p:inputText id="username" value="#{userBean.username}"/>
+                </h:panelGrid>
+
+                <p:commandButton value="Create User" id="create" update="table1"
+                                 actionListener="#{userBean.createUser}"/>
+
+            </p:panel>
+
+            <p:panel header="Report">
+            <p:commandButton value="Report Users" id="ajax2" update="@all" actionListener="#{userBean.loadUsers}" ajax="true"/>
+            <p:dataTable var="user" value="#{userBean.users}" id="table1">
+                <p:column headerText="Id">
+                    <h:outputText value="#{user.userId}"/>
+                </p:column>
+
+                <p:column headerText="NAME">
+                    <h:outputText value="#{user.name}"/>
+                </p:column>
+
+                <p:column headerText="FAMILY">
+                    <h:outputText value="#{user.family}"/>
+                </p:column>
+
+                <p:column headerText="USERNAME">
+                    <h:outputText value="#{user.userName}"/>
+                </p:column>
+            </p:dataTable>
+            </p:panel >
+        </h:form>
+    </ui:define>
+</ui:composition>
